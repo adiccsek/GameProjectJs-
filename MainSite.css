@@ -1,0 +1,17 @@
+.MainText{
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+    font-style: italic;
+}
+.GameText{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    min-height: 100px;
+    background-color: beige;
+}
+.UsersInput {
+    text-align: center;
+    margin: auto;
+}
