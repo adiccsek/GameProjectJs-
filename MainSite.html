@@ -9,21 +9,29 @@
     <link rel="stylesheet" href="MainSite.css">
 </head>
 <body>
+   
+    <!--<audio controls autoplay loop volume="`0.3`"  class="AudioHead" > 
+        <source src="0302.mp4" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>-->
+
+      
     <h2 class="MainText">Üdvözöllek a főoldalon!</h2>
     <div class="col-sm-10 GameText"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus ratione culpa ipsum cupiditate quo voluptas labore consequatur dolores ullam fugiat ex enim architecto exercitationem eaque recusandae maiores, error soluta! A?</div>
 
-    <p>
-        <button class="Button3">3x3</button>
-        <button class="Button4">4x4</button>
-        <button class="Button5">5x5</button>
+    <p class="ChooseButtons">
+        <button class="Button3"  id="but3">3x3</button>
+        <button class="Button4"  id="but4">4x4</button>
+        <button class="Button5"  id="but5">5x5</button>
     </p>
 
     <form class="UsersInput">
-        <input type="text" name="User1" value="User1">
-        <input type="text" name="User2" value="User2">
+        <input id="User1Name" type="text" name="User1" placeholder="User1Name" >
+        <input id="User2Name" type="text" name="User2" placeholder="User2Name">
     </form>
     <button class="StartButton">Start the Game</button>
 
+    <script src="GameField.js"></script>
     <script src="MainSite.js"></script>
 </body>
 </html>

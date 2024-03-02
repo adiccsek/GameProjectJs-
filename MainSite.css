@@ -15,3 +15,39 @@
     text-align: center;
     margin: auto;
 }
+.AudioHead {
+    float: top;
+    margin: auto;
+    display: block;
+    margin-bottom: 8px;
+}
+.ChooseButtons {
+    justify-content: center;
+    display: block;
+    text-align: center;
+    margin: 2%;
+    
+}
+.Button3 {
+    padding: 10px;
+    min-width: 70px;
+}
+.Button4 {
+    padding: 10px;
+    min-width: 70px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.Button5 {
+    padding: 10px;
+    min-width: 70px;
+}
+
+.Button3:hover , .Button4:hover, .Button5:hover {
+    background-color: black;
+    color: white;
+    border:  none;
+    transition: 0.3s;
+}
+
+
