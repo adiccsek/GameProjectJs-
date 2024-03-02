@@ -1,25 +1,15 @@
 window.onload = function() {
+
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext('2d');
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    let cellSize = Math.min(canvas.width, canvas.height) / 8;
+    const cellSize = Math.min(canvas.width, canvas.height) / 8;
     const buttonValue = localStorage.getItem('buttonValue');
+
     let player1 = localStorage.getItem('user1');
     let player2 = localStorage.getItem('user2');
-
-    let grid3 = 
-    ["", "", "",
-    "", "", "",
-    "", "", ""];
-    let grid4 = 
-    ["", "", "", "", 
-    "", "", "", "",
-    "", "", "", "",];
-    let grid5 = 
-    ["", "", "", "", "",
-    "", "", "", "", "",
-    "", "", "", "", "",];
 
 
     function ResizeWindow() {
