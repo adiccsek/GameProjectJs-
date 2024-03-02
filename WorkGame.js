@@ -5,6 +5,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const cellSize = Math.min(canvas.width, canvas.height) / 8;
 const buttonValue = localStorage.getItem('buttonValue');
+window.buttonValue = buttonValue;
 
 let currentPlayers = 'X';
 
@@ -13,12 +14,14 @@ let grid3 = [
     ["", "", ""],
     ["", "", ""]
 ];
-let grid4 = [
+window.grid3 = grid3;
+let grid4 = [ 
     ["", "", "", ""],
     ["", "", "", ""],
     ["", "", "", ""],
     ["", "", "", ""]
 ];
+window.grid4 = grid4;
 let grid5 = [
     ["", "", "", "", ""],
     ["", "", "", "", ""],
@@ -26,6 +29,8 @@ let grid5 = [
     ["", "", "", "", ""],
     ["", "", "", "", ""]
 ];
+window.grid5 = grid5;
+
 
 
 function drawX(x, y) {
@@ -86,5 +91,7 @@ function handleClick(e) {
 }
 
 canvas.addEventListener('click', handleClick);
+
+
 
 

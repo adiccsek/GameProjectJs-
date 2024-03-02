@@ -3,6 +3,9 @@ window.onload = function() {
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext('2d');
 
+            window.ctx = ctx;
+            window.canvas = canvas;
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     const cellSize = Math.min(canvas.width, canvas.height) / 8;
@@ -38,6 +41,7 @@ window.onload = function() {
         ctx.lineWidth = 2;
         ctx.stroke();
     }
+    window.drawGrid3 = drawGrid3;
 
     function drawGrid4() {
         ctx.beginPath();
@@ -50,6 +54,7 @@ window.onload = function() {
         ctx.lineWidth = 2;
         ctx.stroke();
     }
+    window.drawGrid4 = drawGrid4;
 
     function drawGrid5() {
         ctx.beginPath();
@@ -62,6 +67,7 @@ window.onload = function() {
         ctx.lineWidth = 2;
         ctx.stroke();
     };
+    window.drawGrid5 = drawGrid5;
 
     if (buttonValue == '3') {
         drawGrid3();

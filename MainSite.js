@@ -24,16 +24,17 @@ Start.addEventListener('click', () => {
     if (User1Name.value == '' || User2Name.value == ''){
         window.alert("Kérem adjon meg nevet!");
     } else {
-        location.href="MainSite.html?player1=" + encodeURIComponent(User1Name.value) + "&player2=" + encodeURIComponent(User2Name.value)
+        location.href="MainSite.html?player1=" + encodeURIComponent(User1Name.value) + "&player2=" + encodeURIComponent(User2Name.value);
+        let user1 = User1Name.value;
+        let user2 = User2Name.value;
+        localStorage.setItem('user1', user1);
+        localStorage.setItem('user2', user2);
+        localStorage.setItem('buttonValue', buttonValue); 
+        window.location.href='GameField.html';
     }
 
     
-    let user1 = User1Name.value;
-    let user2 = User2Name.value;
-    localStorage.setItem('user1', user1);
-    localStorage.setItem('user2', user2);
-    localStorage.setItem('buttonValue', buttonValue); 
-    window.location.href='GameField.html';
+   
     
 });
 
