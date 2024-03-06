@@ -31,9 +31,39 @@
     </form>
     <button class="StartButton">Start the Game</button>
 
+    <script>
+        var sizeButton3 = document.querySelector("#but3");
+        var sizeButton4 = document.querySelector("#but4");
+        var sizeButton5 = document.querySelector("#but5");
+
+        let buttonValue = 0;
+
+        sizeButton3.addEventListener("click", function(){
+            buttonValue = 3;
+            window.alert("3x3-as játékot választottál!");
+            localStorage.setItem("buttonValue", buttonValue);
+            window.location.reload();
+        });
+        sizeButton4.addEventListener("click", function(){
+            buttonValue = 4;
+            window.alert("4x4-es játékot választottál!");
+            localStorage.setItem("buttonValue", buttonValue);
+            window.location.reload();
+        });
+        sizeButton5.addEventListener("click", function(){
+            buttonValue = 5;
+            window.alert("5x5-ös játékot választottál!");
+            localStorage.setItem("buttonValue", buttonValue);
+            window.location.reload();
+        });
+        var getvalue = localStorage.getItem("buttonValue");
+            console.log(getvalue);
+
+    </script>
+
+
     <script src="GameField.js"></script>
-    <script src="MainSite.js"></script>
     <script src="WorkGame.js"></script>
-    <script src="Decision.js"></script>
+   
 </body>
 </html>
