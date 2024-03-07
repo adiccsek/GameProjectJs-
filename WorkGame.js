@@ -6,22 +6,25 @@ canvas.height = window.innerHeight;
 let cellSize = Math.min(canvas.width, canvas.height) / 8;
 const MainSiteSetValue2 = localStorage.getItem('buttonValue');
 
+let User1 = localStorage.getItem("User1Name");
+let User2 = localStorage.getItem("User2Name");
 
 let currentPlayers = 'X';
+
 
 let grid3 = [
     ["", "", ""],
     ["", "", ""],
     ["", "", ""]
 ];
-window.grid3 = grid3;
+
 let grid4 = [ 
     ["", "", "", ""],
     ["", "", "", ""],
     ["", "", "", ""],
     ["", "", "", ""]
 ];
-window.grid4 = grid4;
+
 let grid5 = [
     ["", "", "", "", ""],
     ["", "", "", "", ""],
@@ -29,7 +32,7 @@ let grid5 = [
     ["", "", "", "", ""],
     ["", "", "", "", ""]
 ];
-window.grid5 = grid5;
+
 
 
 
@@ -51,6 +54,52 @@ function drawO(x, y) {
     ctx.stroke();
 }
 
+function checkWinner(grid) {
+    const size = grid.length;
+
+    
+    for (let i = 0; i < size; i++) {
+        if (new Set(grid[i]).size === 1 && grid[i][0] !== '') {
+            return grid[i][0];
+        }
+    }
+
+  
+    for (let i = 0; i < size; i++) {
+        let column = grid.map(row => row[i]);
+        if (new Set(column).size === 1 && column[0] !== '') {
+            return column[0];
+        }
+    }
+
+    
+    let mainDiagonal = grid.map((row, i) => row[i]);
+    if (new Set(mainDiagonal).size === 1 && mainDiagonal[0] !== '') {
+        return mainDiagonal[0];
+    }
+
+    
+    let secondaryDiagonal = grid.map((row, i) => row[size - i - 1]);
+    if (new Set(secondaryDiagonal).size === 1 && secondaryDiagonal[0] !== '') {
+        return secondaryDiagonal[0];
+    }
+
+    
+    return null;
+}
+function IsMatrixFull (grid) {
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[i].length; j++) {
+            if (grid[i][j] == "") {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+
+
 function handleClick(e) {
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left - canvas.width / 2 + MainSiteSetValue2 / 2 * cellSize;
@@ -68,6 +117,16 @@ function handleClick(e) {
             drawO(I * cellSize, J * cellSize);
             currentPlayers = 'X';
         }
+        if (checkWinner(grid3) === 'X') {
+            alert(User1 + ' wins!');
+            
+        } else if (checkWinner(grid3) === 'O') {
+            alert(User2 + ' wins!');
+            
+        } else if (IsMatrixFull(grid3)) {
+            alert('It is a tie!');
+            
+        }
     }
 
     if (MainSiteSetValue2== '4' && I < 4 && J < 4 && grid4[I][J] == "") {
@@ -79,6 +138,16 @@ function handleClick(e) {
             drawO(I * cellSize, J * cellSize);
             currentPlayers = 'X';
         }
+        if (checkWinner(grid4) === 'X') {
+            alert(User1 + ' wins!');
+            
+        } else if (checkWinner(grid4) === 'O') {
+            alert(User2 + ' wins!');
+            
+        } else if (IsMatrixFull(grid4)) {
+            alert('It is a tie!');
+            
+        }
     }
 
     if (MainSiteSetValue2 == '5' && I < 5 && J < 5 && grid5[I][J] == "") {
@@ -89,6 +158,16 @@ function handleClick(e) {
         } else {
             drawO(I * cellSize, J * cellSize);
             currentPlayers = 'X';
+        }
+        if (checkWinner(grid5) === 'X') {
+            alert(User1 + ' wins!');
+            
+        } else if (checkWinner(grid5) === 'O') {
+            alert(User2 + ' wins!');
+            
+        } else if (IsMatrixFull(grid5)) {
+            alert('It is a tie!');
+            
         }
     }
 }
@@ -122,7 +201,13 @@ function redrawGrid() {
             }
         }
     }
-}
+};
+
+
+
+
+
+
 
 
 
