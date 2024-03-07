@@ -31,6 +31,9 @@
     </form>
     <button class="StartButton">Start the Game</button>
 
+
+    <!--Itt átadjuk a gombokat, és megfigyeljük hogy 'clickelnek-e rá.' Ha igen beállítunk egy étéket és LocalStorage-be belerakjuk hogy akárhol 
+        majd elérhessük a változónkat. Az oldal újratöltése azért van, mert a localstorage akkor hívja be újból a változónkat.-->
     <script>
         var sizeButton3 = document.querySelector("#but3");
         var sizeButton4 = document.querySelector("#but4");
@@ -40,24 +43,40 @@
 
         sizeButton3.addEventListener("click", function(){
             buttonValue = 3;
-            window.alert("3x3-as játékot választottál!");
+            console.log("3x3-as játékot választottál!");
             localStorage.setItem("buttonValue", buttonValue);
             window.location.reload();
         });
         sizeButton4.addEventListener("click", function(){
             buttonValue = 4;
-            window.alert("4x4-es játékot választottál!");
+            console.log("4x4-es játékot választottál!");
             localStorage.setItem("buttonValue", buttonValue);
             window.location.reload();
         });
         sizeButton5.addEventListener("click", function(){
             buttonValue = 5;
-            window.alert("5x5-ös játékot választottál!");
+            console.log("5x5-ös játékot választottál!");
             localStorage.setItem("buttonValue", buttonValue);
             window.location.reload();
         });
+        
         var getvalue = localStorage.getItem("buttonValue");
-            console.log(getvalue);
+        console.log(getvalue);
+
+        var StartButton = document.querySelector(".StartButton");
+
+
+        //Itt megnézzük ügye, hogy elindította e a játékot, és ha igen akkor elmentjük a nevét a localstorage-be, megnézzük hogy a User mezők üresek-e.
+        StartButton.addEventListener("click", function(){
+            if (document.getElementById("User1Name").value == "" || document.getElementById("User2Name").value == "") {
+                alert("Kérlek add meg a neved!");
+                return;
+            }
+            console.log("Start the Game");
+            localStorage.setItem("User1Name", document.getElementById("User1Name").value);
+            localStorage.setItem("User2Name", document.getElementById("User2Name").value);
+            window.location.href = "GameField.html";
+        });
 
     </script>
 
