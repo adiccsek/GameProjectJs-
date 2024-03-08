@@ -3,23 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="GameField.css">
     <title>Document</title>
 </head>
 <body>
-     <div>Users:</div>
+    <h3 id="CurrentPlayer1">CurrentPlayer: </h3>
+    <button onclick="Clear()">Clear</button> 
+    <button onclick="RestartwithNewName()">Restart with new Name</button>
+    <br>
+    <div id="UserPoints">
+    </div>
     
+
+    <script>
+       let User1 = localStorage.getItem("User1Name");
+       let User2 = localStorage.getItem("User2Name"); 
+
+       let User1Pointss = localStorage.getItem("User1Points");
+       let User2Pointss = localStorage.getItem("User2Points");
+
+        setInterval(function() {
+            let currentPlayer = localStorage.getItem('currentPlayers');
+            let playerName = currentPlayer === 'X' ? User1 : User2 ;
+        document.getElementById("CurrentPlayer1").innerHTML = "CurrentPlayer: " + playerName;
+        
+}, 100);
+        
+        document.getElementById("UserPoints").innerHTML = User1 + " : " + User1Pointss + " " + User2 + " : " + User2Pointss;
+        
+
+
+       
+    function Clear()
+    {
+        location.reload();
+    }
+    function RestartwithNewName()
+    {
+        localStorage.removeItem("User1Name");
+        localStorage.removeItem("User2Name");
+        window.location.href = "MainSite.html";
+    }
+   
+
+    </script>
 
 <canvas id="myCanvas" ></canvas>
 
 
 
-
-<script>
-    let MainSiteGetValue3 = localStorage.getItem("buttonValue");
-    
-
-
-</script>
 
 
 

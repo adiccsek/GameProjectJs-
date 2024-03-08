@@ -6,10 +6,10 @@ canvas.height = window.innerHeight;
 let cellSize = Math.min(canvas.width, canvas.height) / 8;
 const MainSiteSetValue2 = localStorage.getItem('buttonValue');
 
-let User1 = localStorage.getItem("User1Name");
-let User2 = localStorage.getItem("User2Name");
+
 
 let currentPlayers = 'X';
+localStorage.setItem('currentPlayers', currentPlayers);
 
 
 let grid3 = [
@@ -108,6 +108,9 @@ function handleClick(e) {
     const I = Math.floor(x / cellSize);
     const J = Math.floor(y / cellSize);
     
+    let User1Points = 0;
+    let User2Points = 0;
+
     if (MainSiteSetValue2 == '3' && I < 3 && J < 3 && grid3[I][J] == "") {
         grid3[I][J] = currentPlayers;
         if (currentPlayers == 'X') {
@@ -117,17 +120,24 @@ function handleClick(e) {
             drawO(I * cellSize, J * cellSize);
             currentPlayers = 'X';
         }
+        localStorage.setItem('currentPlayers', currentPlayers);
         if (checkWinner(grid3) === 'X') {
             alert(User1 + ' wins!');
-            
+            User1Points++;
+           
         } else if (checkWinner(grid3) === 'O') {
             alert(User2 + ' wins!');
+            User2Points++;
             
         } else if (IsMatrixFull(grid3)) {
             alert('It is a tie!');
             
         }
+        localStorage.setItem('User1Points', User1Points);
+        localStorage.setItem('User2Points', User2Points);
     }
+
+
 
     if (MainSiteSetValue2== '4' && I < 4 && J < 4 && grid4[I][J] == "") {
         grid4[I][J] = currentPlayers;
@@ -138,12 +148,15 @@ function handleClick(e) {
             drawO(I * cellSize, J * cellSize);
             currentPlayers = 'X';
         }
+        localStorage.setItem('currentPlayers', currentPlayers);
         if (checkWinner(grid4) === 'X') {
             alert(User1 + ' wins!');
-            
+            User1Points++;
+            localStorage.setItem('User1Points', User1Points);
         } else if (checkWinner(grid4) === 'O') {
             alert(User2 + ' wins!');
-            
+            User2Points++;
+            localStorage.setItem('User2Points', User2Points);
         } else if (IsMatrixFull(grid4)) {
             alert('It is a tie!');
             
@@ -159,12 +172,15 @@ function handleClick(e) {
             drawO(I * cellSize, J * cellSize);
             currentPlayers = 'X';
         }
+        localStorage.setItem('currentPlayers', currentPlayers);
         if (checkWinner(grid5) === 'X') {
             alert(User1 + ' wins!');
-            
+            User1Points++;
+            localStorage.setItem('User1Points', User1Points);
         } else if (checkWinner(grid5) === 'O') {
             alert(User2 + ' wins!');
-            
+            User2Points++;
+            localStorage.setItem('User2Points', User2Points);
         } else if (IsMatrixFull(grid5)) {
             alert('It is a tie!');
             
@@ -173,7 +189,6 @@ function handleClick(e) {
 }
 
 canvas.addEventListener('click', handleClick);
-
 window.addEventListener('resize', handleResize);
 
 function handleResize() {
