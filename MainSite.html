@@ -67,17 +67,29 @@
 
 
         //Itt megnézzük ügye, hogy elindította e a játékot, és ha igen akkor elmentjük a nevét a localstorage-be, megnézzük hogy a User mezők üresek-e.
-        StartButton.addEventListener("click", function(){
-            if (document.getElementById("User1Name").value == "" || document.getElementById("User2Name").value == "") {
-                alert("Kérlek add meg a neved!");
-                return;
-            }
-            console.log("Start the Game");
-            localStorage.setItem("User1Name", document.getElementById("User1Name").value);
-            localStorage.setItem("User2Name", document.getElementById("User2Name").value);
-            window.location.href = "GameField.html";
-        });
+    StartButton.addEventListener("click", function(){
+    if (document.getElementById("User1Name").value == "" || document.getElementById("User2Name").value == "") {
+        alert("Kérlek add meg a neved!");
+        return;
+    }
+    console.log("Start the Game");
 
+    // Generate a random number between 0 and 1
+    let randomNumber = Math.floor(Math.random() * 2);
+
+    // Assign 'X' and 'O' to the players based on the random number
+    if (randomNumber === 0) {
+        localStorage.setItem("User1Name", document.getElementById("User1Name").value + ":X");
+        localStorage.setItem("User2Name", document.getElementById("User2Name").value + ":O");
+        localStorage.setItem('currentPlayers', 'X');
+    } else {
+        localStorage.setItem("User1Name", document.getElementById("User1Name").value + ":O");
+        localStorage.setItem("User2Name", document.getElementById("User2Name").value + ":X");
+        localStorage.setItem('currentPlayers', 'O');
+    }
+
+    window.location.href = "GameField.html";
+});
     </script>
 
 

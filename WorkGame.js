@@ -7,10 +7,7 @@ let cellSize = Math.min(canvas.width, canvas.height) / 8;
 const MainSiteSetValue2 = localStorage.getItem('buttonValue');
 
 
-let currentPlayers = 'X';
-
-
-localStorage.setItem('currentPlayers', currentPlayers);
+let currentPlayers = localStorage.getItem('currentPlayers');
 
 
 
@@ -65,6 +62,7 @@ function checkWinner(grid) {
     
     for (let i = 0; i < size; i++) {
         if (new Set(grid[i]).size === 1 && grid[i][0] !== '') {
+            localStorage.setItem('lastWinner', grid[i][0]);
             return grid[i][0];
         }
     }
@@ -73,6 +71,7 @@ function checkWinner(grid) {
     for (let i = 0; i < size; i++) {
         let column = grid.map(row => row[i]);
         if (new Set(column).size === 1 && column[0] !== '') {
+            localStorage.setItem('lastWinner', column[0]);
             return column[0];
         }
     }
@@ -80,12 +79,14 @@ function checkWinner(grid) {
     
     let mainDiagonal = grid.map((row, i) => row[i]);
     if (new Set(mainDiagonal).size === 1 && mainDiagonal[0] !== '') {
+        localStorage.setItem('lastWinner', mainDiagonal[0]);
         return mainDiagonal[0];
     }
 
     
     let secondaryDiagonal = grid.map((row, i) => row[size - i - 1]);
     if (new Set(secondaryDiagonal).size === 1 && secondaryDiagonal[0] !== '') {
+        localStorage.setItem('lastWinner', secondaryDiagonal[0]);
         return secondaryDiagonal[0];
     }
 
@@ -116,14 +117,17 @@ function handleClick(e) {
     let User1Points = parseInt(localStorage.getItem('User1Points')) || 0;
     let User2Points = parseInt(localStorage.getItem('User2Points')) || 0;
 
+    let User1Symbol = localStorage.getItem('User1Name').split(':')[1];
+    let User2Symbol = localStorage.getItem('User2Name').split(':')[1];
+
     if (MainSiteSetValue2 == '3' && I < 3 && J < 3 && grid3[I][J] == "") {
         grid3[I][J] = currentPlayers;
-        if (currentPlayers == 'X') {
+        if (currentPlayers == User1Symbol) {
             drawX(I * cellSize, J * cellSize);
-            currentPlayers = 'O';
+            currentPlayers = User2Symbol;
         } else {
             drawO(I * cellSize, J * cellSize);
-            currentPlayers = 'X';
+            currentPlayers = User1Symbol;
         }
         localStorage.setItem('currentPlayers', currentPlayers);
         if (checkWinner(grid3) === 'X') {
@@ -146,12 +150,12 @@ function handleClick(e) {
 
     if (MainSiteSetValue2== '4' && I < 4 && J < 4 && grid4[I][J] == "") {
         grid4[I][J] = currentPlayers;
-        if (currentPlayers == 'X') {
+        if (currentPlayers == User1Symbol) {
             drawX(I * cellSize, J * cellSize);
-            currentPlayers = 'O';
+            currentPlayers = User2Symbol;
         } else {
             drawO(I * cellSize, J * cellSize);
-            currentPlayers = 'X';
+            currentPlayers = User1Symbol;
         }
         localStorage.setItem('currentPlayers', currentPlayers);
         if (checkWinner(grid4) === 'X') {
@@ -170,12 +174,12 @@ function handleClick(e) {
 
     if (MainSiteSetValue2 == '5' && I < 5 && J < 5 && grid5[I][J] == "") {
         grid5[I][J] = currentPlayers;
-        if (currentPlayers == 'X') {
+        if (currentPlayers == User1Symbol) {
             drawX(I * cellSize, J * cellSize);
-            currentPlayers = 'O';
+            currentPlayers = User2Symbol;
         } else {
             drawO(I * cellSize, J * cellSize);
-            currentPlayers = 'X';
+            currentPlayers = User1Symbol;
             
         }
         localStorage.setItem('currentPlayers', currentPlayers);
