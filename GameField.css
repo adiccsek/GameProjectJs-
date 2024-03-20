@@ -2,4 +2,15 @@
    text-align: center;
    margin-top: 10px;
    margin-bottom: 0;
+   border-style: double;
+   border: 3px solid black;
+   border-radius: 5px;
+   font-weight: bold;
+ }
+
+ #div1{
+  margin-top: 10px;
+  margin: auto;
+  text-align: center;
+  width: 25%;
  }

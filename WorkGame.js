@@ -47,6 +47,7 @@ function drawX(x, y) {
     ctx.lineTo(x + cellSize, y + cellSize);
     ctx.moveTo(x + cellSize, y);
     ctx.lineTo(x, y + cellSize);
+    ctx.strokeStyle = "blue";
     ctx.stroke();
 }
 
@@ -54,6 +55,7 @@ function drawO(x, y) {
 
     ctx.beginPath();
     ctx.arc(x + cellSize / 2, y + cellSize / 2, cellSize / 2, 0, Math.PI * 2);
+    ctx.strokeStyle = "red";
     ctx.stroke();
 }
 
