@@ -7,12 +7,13 @@
     <title>Gamefield</title>
 </head>
 <body>
-    <div id="div1">
-        <h3 id="CurrentPlayer1">CurrentPlayer: </h3>
-    </div>
-    
-    <button onclick="Clear()">Clear</button> 
+
+    <h3 id="CurrentPlayer1">CurrentPlayer: </h3>
+    <button onclick="Clear()">Új játék</button>  
+
     <button onclick="RestartwithNewName()">Restart with new Name</button>
+    <button onclick="ClearUserPoints()" id="ClearUserPoints">Clear User Points</button>
+    <button onclick="Restart()" >Restart</button>
     <br>
     <div id="UserPoints">
     </div>
@@ -34,7 +35,10 @@
         
         document.getElementById("UserPoints").innerHTML = User1 + " : " + User1Pointss + " " + User2 + " : " + User2Pointss;
         
-
+        document.getElementById("ClearUserPoints").addEventListener("click", function(){
+        let result = WhoWins(parseInt(User1Pointss), parseInt(User2Pointss));
+        alert(result);
+    });
 
        
     function Clear()
@@ -46,13 +50,42 @@
         localStorage.removeItem("User1Name");
         localStorage.removeItem("User2Name");
         window.location.href = "MainSite.html";
+        localStorage.setItem("User1Points", 0);
+        localStorage.setItem("User2Points", 0);
     }
+    function ClearUserPoints()
+    {
+        localStorage.setItem("User1Points", 0);
+        localStorage.setItem("User2Points", 0);
+        window.location.href = "GameField.html";
+    }
+    function Restart()
+    {
+        window.location.href = "MainSite.html";
+        localStorage.setItem("User1Points", 0);
+        localStorage.setItem("User2Points", 0);
+    }
+    function WhoWins(User1p, User2p)
+    {
+        if(User1p > User2p)
+        {
+            return User1 + " Wins with " + User1p + " point(s)";
+        }
+        else if(User1p < User2p)
+        {
+            return User2 + " Wins with " + User2p + " point(s)";
+        }
+        else
+        {
+            return "Draw " + User1p + " : " + User2p;
+        }
+    } 
+    
    
 
     </script>
 
 <canvas id="myCanvas" ></canvas>
-
 
 
 
